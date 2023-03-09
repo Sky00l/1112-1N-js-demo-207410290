@@ -56,16 +56,7 @@ const menu = [
 
 ];
 
-const btn = [
-    {
-    category1: "all",
-    category2: "breakfast",
-    category3: "lunch",
-    category4: "shakes",
-    category4: "dinner",
-    },
-
-];
+const categories = ['all', 'breakfast', 'lunch', 'dinner', 'shakes'];
 
 
 const sectionCenter = document.querySelector('.section-center');
@@ -123,3 +114,4 @@ const displayBtn = (btn) => {
 window.addEventListener('DOMContentLoaded', () => {
     displayBtn(btn);
 });
+
