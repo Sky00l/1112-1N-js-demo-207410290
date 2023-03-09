@@ -56,5 +56,70 @@ const menu = [
 
 ];
 
+const btn = [
+    {
+    category1: "all",
+    category2: "breakfast",
+    category3: "lunch",
+    category4: "shakes",
+    category4: "dinner",
+    },
+
+];
+
+
 const sectionCenter = document.querySelector('.section-center');
 const btnContainer = document.querySelector('btn-container');
+
+const displayMenuItems = (menu) => {
+    let displayMenu = menu.map( (item) => {
+        return `
+        <article class="menu-item">
+        <img src="${item.img}" alt="${item.title}" class="photo" />
+        <div class="item-info">
+          <header>
+            <h4>${item.title}</h4>
+            <h4 class="price">${item.price}</h4>
+          </header>
+          <p class="item-text">
+          ${item.desc}
+          </p>
+        </div>
+      </article>`
+      
+    });
+    console.log('displayMenu', displayMenu);
+    displayMenu = displayMenu.join('');
+    console.log('displayMenu after join', displayMenu);
+    sectionCenter.innerHTML = displayMenu;
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    displayMenuItems(menu);
+});
+
+
+
+const displayBtn = (btn) => {
+    let displayBtn = btn.map( (button) => {
+        return `
+         <button type="button" class="filter-btn" data-id="all">${button.category1}</button>
+        <button type="button" class="filter-btn" data-id="breakfast">
+        ${button.category2}
+        </button>
+        <button type="button" class="filter-btn" data-id="lunch">${button.category3}</button>
+        <button type="button" class="filter-btn" data-id="shakes">
+        ${button.category4}
+        </button>
+        <button type="button" class="filter-btn" data-id="dinner">${button.category5}</button>
+        `
+    });
+    console.log('displayBtn', displayBtn);
+    displayBtn = displayBtn.join('');
+    console.log('displayBtn after join', displayBtn);
+    btnContainer.innerHTML = displayBtn;
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    displayBtn(btn);
+});
