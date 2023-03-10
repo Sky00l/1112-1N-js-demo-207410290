@@ -86,7 +86,9 @@ const displayMenuItems = (menu) => {
 
 
 
-const categories = ['all', 'breakfast', 'lunch', 'dinner', 'shakes'];
+// const categories = ['all', 'breakfast', 'lunch', 'dinner', 'shakes'];
+const categories = ['all', ...new Set(menu.map((item) => item.category))];
+
 const btnContainer = document.querySelector('btn-container');
 const displayMenuButttons = () => {
   let menuButtons = categories.map((category) => {
