@@ -45,26 +45,26 @@ const displayMenuButtons = () => {
   menuButtons = menuButtons.join('');
   // console.log('displayMenuButtons after join\n', menuButtons);
   btnContainer.innerHTML = menuButtons;
-
 }
 
 const filterBtns = document.querySelectorAll('.filter-btn');
-console.log('filterBtns', filterBtns);
-filterBtns.forEach( (btn) => {
- btn.addEventListener('click',(e) => {
-  console.log('data-id', e.currentTarget.dataset.id);
-  const category = e.currentTarget.dataset.id;
-  const filterMenu = menu.filter((item) => item.category === category);
-  console.log('filterMenu', filterMenu);
-  if(category === 'all'){
-    console.log('all',menu);
-    displayMenuItems(menu);
-  }else{
-    displayMenuItems(filterMenu);
-    }
-  
- });
-});
+  console.log('filterBtns', filterBtns);
+  filterBtns.forEach( (btn) => {
+   btn.addEventListener('click',(e) => {
+    console.log('data-id', e.currentTarget.dataset.id);
+    const category = e.currentTarget.dataset.id;
+    const filterMenu = menu.filter((item) => item.category === category);
+    console.log('filterMenu', filterMenu);
+    if(category === 'all'){
+      console.log('all',menu);
+      displayMenuItems(menu);
+    }else{
+      displayMenuItems(filterMenu);
+      }
+    
+   });
+  });
+
 
 
 window.addEventListener('DOMContentLoaded', () => {
