@@ -1,9 +1,10 @@
 import {menu} from './data.js'
+const categories = ['all', ...new Set(menu.map((item) => item.category))];
 
 
 
 const sectionCenter = document.querySelector('.section-center');
-
+const btnContainer = document.querySelector('btn-container');
 
 const displayMenuItems = (menu) => {
   let displayMenu = menu.map((item) => {
@@ -31,20 +32,40 @@ const displayMenuItems = (menu) => {
 
 
 // const categories = ['all', 'breakfast', 'lunch', 'dinner', 'shakes'];
-const categories = ['all', ...new Set(menu.map((item) => item.category))];
 
-const btnContainer = document.querySelector('btn-container');
+
+
 const displayMenuButtons = () => {
   let menuButtons = categories.map((category) => {
     return ` <button type="button" class="filter-btn" data-id="${category}">
     ${category}
   </button>`;
   })
-  console.log('displayButtons before join', menuButtons);
+  // console.log('displayButtons before join', menuButtons);
   menuButtons = menuButtons.join('');
-  console.log('displayMenuButtons after join\n', menuButtons);
+  // console.log('displayMenuButtons after join\n', menuButtons);
   btnContainer.innerHTML = menuButtons;
+
 }
+
+const filterBtns = document.querySelectorAll('.filter-btn');
+console.log('filterBtns', filterBtns);
+filterBtns.forEach( (btn) => {
+ btn.addEventListener('click',(e) => {
+  console.log('data-id', e.currentTarget.dataset.id);
+  const category = e.currentTarget.dataset.id;
+  const filterMenu = menu.filter((item) => item.category === category);
+  console.log('filterMenu', filterMenu);
+  if(category === 'all'){
+    console.log('all',menu);
+    displayMenuItems(menu);
+  }else{
+    displayMenuItems(filterMenu);
+    }
+  
+ });
+});
+
 
 window.addEventListener('DOMContentLoaded', () => {
   displayMenuItems(menu);
